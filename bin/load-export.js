@@ -34,7 +34,8 @@ require('../export/users').forEach(user => {
     users[user.id] = {
         name: user.name,
         real_name: user.real_name,
-        picture: user.profile.image_192,
+        picture: user.profile.image_72,
+        picture_large: user.profile.image_512,
         is_deleted: user.deleted,
     };
 });

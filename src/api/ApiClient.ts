@@ -1,5 +1,5 @@
-import {HttpClient, HttpPromise} from './HttpClient';
-import {ApiChannel, ApiUser, Map} from '@/types';
+import {HttpCanceler, HttpClient, HttpPromise} from './HttpClient';
+import {ApiChannel, ApiMessage, ApiUser, Map} from '@/types';
 
 export class ApiClient {
     private readonly httpClient: HttpClient;
@@ -8,11 +8,15 @@ export class ApiClient {
         this.httpClient = httpClient;
     }
 
+    public fetchUsers(): HttpPromise<Map<ApiUser>> {
+        return this.httpClient.get<Map<ApiUser>>('/users');
+    }
+
     public fetchChannels(): HttpPromise<ApiChannel[]> {
         return this.httpClient.get<ApiChannel[]>('/channels');
     }
 
-    public fetchUsers(): HttpPromise<Map<ApiUser>> {
-        return this.httpClient.get<Map<ApiUser>>('/users');
+    public fetchChannel(channel: string, canceler?: HttpCanceler): HttpPromise<ApiMessage[]> {
+        return this.httpClient.get<ApiMessage[]>('/channels/' + channel, canceler);
     }
 }

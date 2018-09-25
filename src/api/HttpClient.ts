@@ -5,7 +5,7 @@ export type HttpCanceler = ((cancel: Canceler) => void);
 export type HttpPromise<T> = Promise<T>;
 
 export class HttpClient {
-    public get<T = any>(endpoint: string, config?: HttpConfig, canceler?: HttpCanceler): HttpPromise<T> {
+    public get<T = any>(endpoint: string, canceler?: HttpCanceler, config?: HttpConfig): HttpPromise<T> {
         config = config || {};
 
         if (canceler) {

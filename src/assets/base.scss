@@ -1,0 +1,15 @@
+@import "~bootswatch/dist/sandstone/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/sandstone/bootswatch";
+
+html, body, #app, .loaded, .app-view {
+  height: 100%;
+}
+
+.explore {
+  height: calc(100% - 54px);
+}
+
+a {
+  color: #6c9338;
+}
