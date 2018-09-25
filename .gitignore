@@ -19,3 +19,11 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+# App
+export/*
+!export/.gitkeep
+public/api/*
+!public/api/.gitkeep
+src/*.js
+src/*.js.map
