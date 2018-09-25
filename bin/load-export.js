@@ -58,9 +58,18 @@ channels.forEach(channel => {
     fs.readdirSync(exportDir+'/'+channel.name).forEach(filename => {
         if (filename.endsWith('.json')) {
             require('../export/'+channel.name+'/'+filename).forEach(message => {
+                let text = message.text;
+
+                if (typeof message.files !== 'undefined') {
+                    let urls = [];
+                    message.files.forEach(file => urls.push(file.url_private_download));
+
+                    text += ' (attached: ' + urls.join(', ') + ')';
+                }
+
                 messages.push({
                     user: message.user,
-                    text: message.text,
+                    text: text,
                     ts: Math.round(message.ts),
                 });
             });

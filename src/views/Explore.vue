@@ -16,6 +16,7 @@
         &__channels {
             flex-grow: 0.23;
             flex-basis: 0;
+            min-width: 200px;
         }
 
         &__messages {
